@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+
+import Mails from './components/mails/Mails'
+import styled from 'styled-components';
 
 function App() {
+
   return (
+    <BrowserRouter >
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Mails</h1>
+      <StyledList>
+      <Link to="/">
+        <li>Home</li>
+        </Link>
+        <Link to="/mails/">
+        <li>Skrzynka</li>
+        </Link>
+      </StyledList>
+      <Routes>
+        <Route path="/mails/" element={<Mails/>}/>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
+
+const StyledList = styled.li`
+list-style-type: none;
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+font-size: 22px;
+margin-left 5vw;
+`
 
 export default App;
